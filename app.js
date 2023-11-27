@@ -31,18 +31,24 @@ form.addEventListener("submit", function (e) {
     errorName.innerHTML = `<p style="color: red;">full name is empty</p>`;
   } else if (fullName.value.length <= 3 || fullName.value.length >= 25) {
     errorName.innerHTML = `<p style="color: red;">full name must be between 3 and 25 characters</p>`;
+  } else {
+    errorName.innerHTML = ``;
   }
 
   // email
   if (email.value === "") {
     errorEmail.innerHTML = `<p style="color: red">email address is empty</p>`;
+  } else {
+    errorEmail.innerHTML = ``;
   }
 
   // mobile
   if (mobile.value === "") {
     errorMobile.innerHTML = `<p style="color: red">mobile number is empty</p>`;
-  } else if (mobile.value.length >= 11) {
+  } else if (mobile.value.length !== 10) {
     errorMobile.innerHTML = `<p style="color: red">mobile number should be 10 digits</p>`;
+  } else {
+    errorMobile.innerHTML = ``;
   }
 
   // password
@@ -50,11 +56,15 @@ form.addEventListener("submit", function (e) {
     errorPassword.innerHTML = `<p style="color: red;">password is empty</p>`;
   } else if (password.value.length !== reEnter.value.length) {
     errorPassword.innerHTML = `<p style="color: red;">password doesn't password</p>`;
+  } else {
+    errorPassword.innerHTML = ``;
   }
 
   // birth
   if (birth.value === "") {
     errorBirth.innerHTML = `<p style="color: red">DOB is empty</p>`;
+  } else {
+    errorBirth.innerHTML = ``;
   }
 
   // option
@@ -82,15 +92,13 @@ form.addEventListener("submit", function (e) {
 
   // photo
   let photoInput = photo.files[0];
-  console.log(photoInput.type);
-  console.log(photoInput.size);
 
   // image/webp
 
   if (photoInput === undefined) {
     errorPhoto.innerHTML = `<p style="color: red">please select photo</p>`;
-  } else if (photoInput.type !== "image/webp") {
-    errorPhoto.innerHTML = `<p style="color: red">selected file is not webp</p>`;
+  } else if (photoInput.type !== "image") {
+    errorPhoto.innerHTML = `<p style="color: red">selected file is not image</p>`;
   } else if (photoInput.size >= 1_000_000) {
     errorPhoto.innerHTML = `<p style="color: red">selected file is greater than 5 mb</p>`;
   }
