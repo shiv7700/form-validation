@@ -4,8 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="🔍 Lightweight JavaScript app for seamless form validation. Enhance user experience, ensure data accuracy, and easily integrate into your projects. Customizable rules, real-time feedback, and a smooth submission process.">
     <title>Form Validation</title>
     <link rel="stylesheet" href="./main.css">
+
+
 </head>
 
 <body>
@@ -29,12 +33,16 @@
         <input type="number" class="mobile">
         <div class="error-mobile"></div>
 
+        <label>Date Of Birth : </label>
+        <input type="date" class="birth">
+        <div class="error-birth"></div>
+
         <label>Password : </label>
-        <input type="number" class="password">
+        <input type="password" class="password"> <input type="button" class="show-pass" value="show password">
         <div></div>
 
         <label>Re-enter Password : </label>
-        <input type="number" class="re-enter">
+        <input type="password" class="re-enter"> <input type="button" class="show-enter" value="show re-enter password">
         <div class="error-password"></div>
 
         <button type="submit" class="submit">Submit</button>
