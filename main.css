@@ -1,0 +1,53 @@
+* {
+  box-sizing: content-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  font-family: cursive;
+}
+
+header {
+  padding: 20px;
+  background-color: blueviolet;
+  color: white;
+}
+
+input {
+  padding: 4px;
+  color: blue;
+  font-weight: bold;
+}
+
+.instruction {
+  margin: 20px;
+}
+
+form {
+  margin: 20px;
+}
+
+.submit {
+  padding: 4px;
+  font-family: cursive;
+  cursor: pointer;
+}
+
+input {
+  margin: 5px;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
