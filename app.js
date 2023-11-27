@@ -10,6 +10,7 @@ form.addEventListener("submit", function (e) {
   const password = document.querySelector(".password");
   const reEnter = document.querySelector(".re-enter");
   const birth = document.querySelector(".birth");
+  const grad = document.querySelector(".grad");
 
   // select error
   const errorName = document.querySelector(".error-name");
@@ -17,6 +18,8 @@ form.addEventListener("submit", function (e) {
   const errorMobile = document.querySelector(".error-mobile");
   const errorPassword = document.querySelector(".error-password");
   const errorBirth = document.querySelector(".error-birth");
+  const errorGrad = document.querySelector(".error-grad");
+  const errorGender = document.querySelector(".error-gender");
 
   // logic
   // name
@@ -48,6 +51,17 @@ form.addEventListener("submit", function (e) {
   // birth
   if (birth.value === "") {
     errorBirth.innerHTML = `<p style="color: red">DOB is empty</p>`;
+  }
+
+  // option
+  if (grad.value === "select education") {
+    errorGrad.innerHTML = `<p style="color: red">please select a option</p>`;
+  }
+
+  // gender
+  let selectedRadio = document.querySelector('input[name="gender"]:checked');
+  if (selectedRadio === null) {
+    errorGender.innerHTML = `<p style="color: red">please select gender</p>`;
   }
 });
 
