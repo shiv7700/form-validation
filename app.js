@@ -11,6 +11,8 @@ form.addEventListener("submit", function (e) {
   const reEnter = document.querySelector(".re-enter");
   const birth = document.querySelector(".birth");
   const grad = document.querySelector(".grad");
+  const checkbox = document.getElementsByClassName("checkbox");
+  const photo = document.querySelector(".photo");
 
   // select error
   const errorName = document.querySelector(".error-name");
@@ -20,6 +22,8 @@ form.addEventListener("submit", function (e) {
   const errorBirth = document.querySelector(".error-birth");
   const errorGrad = document.querySelector(".error-grad");
   const errorGender = document.querySelector(".error-gender");
+  const errorCheckbox = document.querySelector(".error-checkbox");
+  const errorPhoto = document.querySelector(".error-photo");
 
   // logic
   // name
@@ -62,6 +66,33 @@ form.addEventListener("submit", function (e) {
   let selectedRadio = document.querySelector('input[name="gender"]:checked');
   if (selectedRadio === null) {
     errorGender.innerHTML = `<p style="color: red">please select gender</p>`;
+  }
+
+  // language
+  const checked = [];
+  for (let i = 0; i < checkbox.length; i++) {
+    if (checkbox[i].checked) {
+      checked.push(checkbox[i].value);
+    }
+  }
+
+  if (checked.length === 0) {
+    errorCheckbox.innerHTML = `<p style="color: red">please select atleast one language</p>`;
+  }
+
+  // photo
+  let photoInput = photo.files[0];
+  console.log(photoInput.type);
+  console.log(photoInput.size);
+
+  // image/webp
+
+  if (photoInput === undefined) {
+    errorPhoto.innerHTML = `<p style="color: red">please select photo</p>`;
+  } else if (photoInput.type !== "image/webp") {
+    errorPhoto.innerHTML = `<p style="color: red">selected file is not webp</p>`;
+  } else if (photoInput.size >= 1_000_000) {
+    errorPhoto.innerHTML = `<p style="color: red">selected file is greater than 5 mb</p>`;
   }
 });
 
