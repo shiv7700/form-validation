@@ -36,8 +36,13 @@ form.addEventListener("submit", function (e) {
   }
 
   // email
+  const emailValidationRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+  let emailAddress = email.value;
+  let result = emailValidationRegex.test(emailAddress);
   if (email.value === "") {
     errorEmail.innerHTML = `<p style="color: red">email address is empty</p>`;
+  } else if (result === false) {
+    errorEmail.innerHTML = `<p style="color: red">email is not in valid form</p>`;
   } else {
     errorEmail.innerHTML = ``;
   }
@@ -47,15 +52,25 @@ form.addEventListener("submit", function (e) {
     errorMobile.innerHTML = `<p style="color: red">mobile number is empty</p>`;
   } else if (mobile.value.length !== 10) {
     errorMobile.innerHTML = `<p style="color: red">mobile number should be 10 digits</p>`;
+  } else if (Number(mobile.value) < 0) {
+    errorMobile.innerHTML = `<p style="color: red">phone number can't be less than zero</p>`;
   } else {
     errorMobile.innerHTML = ``;
   }
 
   // password
+  const passwordRegex =
+    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d!@#$%^&*()-=_+{};':"\\|,.<>/?]+$/;
   if (password.value === "" || reEnter.value === "") {
     errorPassword.innerHTML = `<p style="color: red;">password is empty</p>`;
   } else if (password.value.length !== reEnter.value.length) {
     errorPassword.innerHTML = `<p style="color: red;">password doesn't password</p>`;
+  } else if (password.value.length === reEnter.value.length) {
+    if (passwordRegex.test(password.value)) {
+      errorPassword.innerHTML = ``;
+    } else {
+      errorPassword.innerHTML = `<p style="color: red;">Password is not okay , use 8+ characters, mix upper & lower case, add a number, and include a special character</p>`;
+    }
   } else {
     errorPassword.innerHTML = ``;
   }
@@ -70,6 +85,8 @@ form.addEventListener("submit", function (e) {
   // option
   if (grad.value === "select education") {
     errorGrad.innerHTML = `<p style="color: red">please select a option</p>`;
+  } else {
+    errorGrad.innerHTML = ``;
   }
 
   // gender
@@ -88,12 +105,12 @@ form.addEventListener("submit", function (e) {
 
   if (checked.length === 0) {
     errorCheckbox.innerHTML = `<p style="color: red">please select atleast one language</p>`;
+  } else {
+    errorCheckbox.innerHTML = ``;
   }
 
   // photo
   let photoInput = photo.files[0];
-
-  // image/webp
 
   if (photoInput === undefined) {
     errorPhoto.innerHTML = `<p style="color: red">please select photo</p>`;
