@@ -64,7 +64,7 @@ form.addEventListener("submit", function (e) {
   if (password.value === "" || reEnter.value === "") {
     errorPassword.innerHTML = `<p style="color: red;">password is empty</p>`;
   } else if (password.value.length !== reEnter.value.length) {
-    errorPassword.innerHTML = `<p style="color: red;">password doesn't password</p>`;
+    errorPassword.innerHTML = `<p style="color: red;">password doesn't match</p>`;
   } else if (password.value.length === reEnter.value.length) {
     if (passwordRegex.test(password.value)) {
       errorPassword.innerHTML = ``;
