@@ -93,6 +93,8 @@ form.addEventListener("submit", function (e) {
   let selectedRadio = document.querySelector('input[name="gender"]:checked');
   if (selectedRadio === null) {
     errorGender.innerHTML = `<p style="color: red">please select gender</p>`;
+  } else {
+    errorGender.innerHTML = "";
   }
 
   // language
